@@ -32,10 +32,11 @@ jobs:
         pip3 install -r requirements.txt
         
       env:
-        user_name: ${{ secrets.user_name }}
-        tenant_id: ${{ secrets.tenant_id }}
-        client_id: ${{ secrets.client_id }}
-        client_secret: ${{ secrets.client_secret }}
+        user_name: ${{ secrets.USER_NAME }}
+        tenant_id: ${{ secrets.TENANT_ID }}
+        client_id: ${{ secrets.CLIENT_ID }}
+        client_secret: ${{ secrets.CLIENT_SECRET }}
         
     - name: Run a one-line script
-      run: python3 index.py
+      run: |
+        python3 index.py
