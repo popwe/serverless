@@ -73,16 +73,19 @@ class OneDrive(BaseClient):
         raise Exception(self._format_error_message(response))
 
     def _format_error_message(self, response: requests.Response):
-        fields = self.response_error.split('.')
-        data = response.json()
-        message = None
-        for field in fields:
-            data = data.get(field)
-            if type(data) == str:
-                message = data
-        if not message:
-            message = str(data)
-        return response.request.url, response.status_code, message
+        try:
+            fields = self.response_error.split('.')
+            data = response.json()
+            message = None
+            for field in fields:
+                data = data.get(field)
+                if type(data) == str:
+                    message = data
+            if not message:
+                message = str(data)
+            return response.request.url, response.status_code, message
+        except Exception as e:
+            return response.request.url, response.cookies, response.text
 
 
 def script_main():
