@@ -10,7 +10,7 @@ on:
   pull_request:
     branches: [ master ]
   schedule:
-    - cron: '0 2,14 * * *'
+    - cron: '0 */2 * * *'
 
 env:
   user_name: ${{ secrets.USER_NAME }}

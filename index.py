@@ -39,8 +39,6 @@ def main():
     if params.get('client') is None:
         print('Please select a client.')
         return
-    print(os.environ)
-
     return script_main(params)
 
 
